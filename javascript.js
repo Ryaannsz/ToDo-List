@@ -3,25 +3,22 @@ let inputTodo = document.getElementById("input")
 let containerTodo = document.getElementById("todo_list")
 
 
-var i=1;
+
 
 btnTodo.addEventListener('click', function(){
-    var p = document.createElement('p')
-    var btn = document.createElement('button')
-    var remove = document.createElement('button')
-    
-    //var tst = document.createElement('button')
-    
+   
 
     
-
+var i = document.getElementsByClassName('bEdit').length+1
 
    
 
         if(inputTodo.value==""){
                 alert("Impossível realizar o procedimento!")
         }else{
-        
+         var p = document.createElement('p')
+         var btn = document.createElement('button')
+          var remove = document.createElement('button')
            
             //Atribuir Classe
             p.setAttribute('class','pEdit')
@@ -38,30 +35,18 @@ btnTodo.addEventListener('click', function(){
             btn.setAttribute('onclick','edit('+i+')')
             remove.setAttribute('onclick','remove('+i+')');
         
-
-         
-
-          
-          
-          
-
-          for(e=0;e<document.getElementsByClassName('pEdit').length;e++){
-            
-            
-            p.innerText = e+1+" - "+inputTodo.value+"."
+            p.innerText = i+" - "+inputTodo.value+"."
             btn.innerText = "Editar"
             remove.innerText = "Remover"
-                
-        
-           }
+               
           }
           
-          containerTodo.appendChild(p);
+          containerTodo.appendChild(p)
           containerTodo.appendChild(btn)
           containerTodo.appendChild(remove)
           
         
-        i++;
+        
         })
 
 
@@ -69,6 +54,15 @@ function edit(i){
 
    document.getElementById(i).innerText = i+" - "+prompt("Digite o novo código: ")+"."
     
+   for(e=1;e<document.getElementsByClassName('pEdit').length+1;e++){
+            
+            
+      p.innerText = e+" - "+inputTodo.value+"."
+      btn.innerText = "Editar"
+      remove.innerText = "Remover"
+          
+  
+     }
 }
 
 function remove(i){
